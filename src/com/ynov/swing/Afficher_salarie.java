@@ -21,23 +21,17 @@ public class Afficher_salarie implements ActionListener{
         ArrayList<Employé> listEmployee = this.myview.personnel.getEmployees();
         Object[][] data_user = new Object[listEmployee.size()+2][];
 
-        int i = 0 ;
+        int x = 0 ;
         int total =0;
         for (Employé e : listEmployee){
-            data_user[i]= (new Object[]{
-                    e.getPosition(),
-                    e.getName(),
-                    e.getAge(),
-                    e.getEntryYear(),
-                    e.calculerSalaire()
-            }); i++;
+            data_user[x]= (new Object[]{ e.getPosition(), e.getName(), e.getAge(), e.getEntryYear(), e.calculerSalaire()}); x++;
             total += e.calculerSalaire();
         }
 
-        data_user[i] = new Object[]{"Salaire moyen", "", "", "", this.myview.personnel.salairemoyen(listEmployee)};
-        i++;
+        data_user[x] = new Object[]{"Salaire moyen", "", "", "", this.myview.personnel.salairemoyen(listEmployee)};
+        x++;
 
-        data_user[i] = new Object[]{"Total salaires", "", "", "", total};
+        data_user[x] = new Object[]{"Total salaires", "", "", "", total};
         String[] titres = {"Metiers", "Employe", "Age", "Année d'entrée", "Salaire"};
 
 
